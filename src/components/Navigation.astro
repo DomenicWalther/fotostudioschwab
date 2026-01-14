@@ -2,159 +2,264 @@
 import Button from "./Button.astro";
 
 const navItems = [
-    { label: "Startseite", href: "/" },
-    { label: "Über Uns", href: "/ueber-uns" },
-    { label: "Fotobox", href: "/fotobox" },
-    { label: "Aktionen", href: "/aktionen" },
-    { label: "Business", href: "/business" },
+  { label: "Startseite", href: "/" },
+  { label: "Über Uns", href: "/ueber-uns" },
+  { label: "Fotobox", href: "/fotobox" },
+  { label: "Aktionen", href: "/aktionen" },
+  { label: "Business", href: "/business" },
 ];
 
 const galerieItems = [
-    { label: "Hochzeiten", href: "/galerie/hochzeiten" },
-    { label: "Events", href: "/galerie/events" },
-    { label: "Geburtstage", href: "/galerie/geburtstage" },
-    { label: "Alle Fotos", href: "/galerie" },
-    { label: "2 Personen", href: "/portfolio/2-personen" },
+  { label: "Hochzeiten", href: "/galerie/hochzeiten" },
+  { label: "Events", href: "/galerie/events" },
+  { label: "Geburtstage", href: "/galerie/geburtstage" },
+  { label: "Alle Fotos", href: "/galerie" },
+  { label: "2 Personen", href: "/portfolio/2-personen" },
 ];
 ---
 
-<nav class="flex justify-around items-center border-b border-black py-5">
-    <div>LOGO</div>
-    <div class="flex items-center gap-5">
-        <ul class="flex gap-5 items-center">
-            {
-                navItems.map((item) => (
-                    <li>
-                        <a href={item.href} class="hover:opacity-70">
-                            {item.label}
-                        </a>
-                    </li>
-                ))
-            }
-            <li class="dropdown-wrapper">
-                <button
-                    id="galerie-button"
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    class="inline-flex items-center gap-x-1 hover:opacity-70 cursor-pointer"
-                >
-                    Galerie
-                    <svg
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                        class="size-4 transition-transform"
-                        id="galerie-icon"
-                    >
-                        <path
-                            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                            clip-rule="evenodd"
-                            fill-rule="evenodd"></path>
-                    </svg>
-                </button>
+<nav class="border-b border-black bg-white sticky top-0 z-[100]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <div class="shrink-0 font-bold text-xl">LOGO</div>
 
-                <div
-                    id="galerie-menu"
-                    role="menu"
-                    class="dropdown-menu w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+      <div class="hidden md:flex items-center gap-8">
+        <ul class="flex gap-6 items-center">
+          {
+            navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-sm font-medium hover:opacity-70 transition-opacity"
                 >
-                    <div class="py-1">
-                        {
-                            galerieItems.map((item) => (
-                                <a
-                                    href={item.href}
-                                    role="menuitem"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                >
-                                    {item.label}
-                                </a>
-                            ))
-                        }
-                    </div>
-                </div>
-            </li>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+
+          <li class="dropdown-wrapper relative flex items-center h-20">
+            <button
+              id="galerie-button-desktop"
+              class="inline-flex items-center gap-x-1 text-sm font-medium hover:opacity-70 cursor-pointer"
+            >
+              Galerie
+              <svg
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                class="size-4 transition-transform duration-200 icon-chevron"
+              >
+                <path
+                  d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                ></path>
+              </svg>
+            </button>
+
+            <div
+              class="dropdown-menu w-52 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+            >
+              <div class="py-1">
+                {
+                  galerieItems.map((item) => (
+                    <a
+                      href={item.href}
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      {item.label}
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          </li>
         </ul>
-        <div>
-            <Button label="Gutschein sichern" />
-            <Button label="Kontaktieren uns" />
+        <div class="flex gap-3">
+          <Button label="Gutschein" />
+          <Button label="Kontakt" />
         </div>
+      </div>
+
+      <div class="md:hidden flex items-center">
+        <button
+          id="mobile-menu-button"
+          class="p-2 text-black focus:outline-none"
+          aria-label="Menu"
+        >
+          <svg
+            id="hamburger-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-8 transition-transform duration-300"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+          <svg
+            id="close-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-8 hidden transition-transform duration-300"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
     </div>
+  </div>
+
+  <div
+    id="mobile-menu-wrapper"
+    class="mobile-menu-container md:hidden border-t border-gray-100"
+  >
+    <div class="overflow-hidden">
+      <div class="px-4 pt-2 pb-8 space-y-1 bg-white">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="block px-3 py-4 text-lg font-medium border-b border-gray-50 opacity-0 mobile-nav-link"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+
+        <div class="border-b border-gray-50">
+          <button
+            id="mobile-galerie-toggle"
+            class="flex justify-between items-center w-full px-3 py-4 text-lg font-medium text-left opacity-0 mobile-nav-link"
+          >
+            Galerie
+            <svg
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="size-6 transition-transform duration-200"
+              id="mobile-chevron"
+            >
+              <path
+                d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+              ></path>
+            </svg>
+          </button>
+          <div id="mobile-galerie-list" class="accordion-container">
+            <div class="overflow-hidden bg-gray-50 pl-6">
+              {
+                galerieItems.map((item) => (
+                  <a
+                    href={item.href}
+                    class="block px-3 py-3 text-base text-gray-600 border-b border-gray-100 last:border-0"
+                  >
+                    {item.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8 flex flex-col gap-4 opacity-0 mobile-nav-link">
+          <Button label="Gutschein sichern" />
+          <Button label="Kontaktiere uns" />
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
 
 <style>
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: calc(100% + 0.5rem);
-        right: 0;
-        opacity: 0;
-        transform: scale(0.95);
-        transition:
-            opacity 100ms ease-out,
-            transform 100ms ease-out;
-        z-index: 50;
-    }
+  .dropdown-menu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 200ms ease-out;
+    z-index: 50;
+  }
+  .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -1.5rem;
+    left: 0;
+    right: 0;
+    height: 1.5rem;
+  }
+  .dropdown-wrapper:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .dropdown-wrapper:hover .icon-chevron {
+    transform: rotate(180deg);
+  }
 
-    .dropdown-menu.show {
-        display: block;
-        opacity: 1;
-        transform: scale(1);
-    }
+  .mobile-menu-container {
+    display: grid;
+    grid-template-rows: 0fr; /* Menü ist eingefahren */
+    transition: grid-template-rows 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-    .dropdown-wrapper {
-        position: relative;
-    }
+  .mobile-menu-container.is-open {
+    grid-template-rows: 1fr;
+  }
 
-    #galerie-button {
-        background: none;
-        border: none;
-        padding: 0;
-        font: inherit;
-        color: inherit;
-    }
+  .mobile-nav-link {
+    transform: translateY(-10px);
+    transition: all 300ms ease-out;
+  }
 
-    #galerie-icon.rotated {
-        transform: rotate(180deg);
-    }
+  .mobile-menu-container.is-open .mobile-nav-link {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 150ms;
+  }
+
+  .accordion-container {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease-in-out;
+  }
+
+  .accordion-container.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
 </style>
 
 <script>
-    const button = document.getElementById("galerie-button");
-    const menu = document.getElementById("galerie-menu");
-    const icon = document.getElementById("galerie-icon");
+  const mobileBtn = document.getElementById("mobile-menu-button");
+  const mobileMenuWrapper = document.getElementById("mobile-menu-wrapper");
+  const hamburgerIcon = document.getElementById("hamburger-icon");
+  const closeIcon = document.getElementById("close-icon");
 
-    if (button && menu && icon) {
-        const toggleMenu = (show: boolean) => {
-            if (show) {
-                menu.classList.add("show");
-                icon.classList.add("rotated");
-                button.setAttribute("aria-expanded", "true");
-            } else {
-                menu.classList.remove("show");
-                icon.classList.remove("rotated");
-                button.setAttribute("aria-expanded", "false");
-            }
-        };
+  const galerieToggle = document.getElementById("mobile-galerie-toggle");
+  const galerieList = document.getElementById("mobile-galerie-list");
+  const mobileChevron = document.getElementById("mobile-chevron");
 
-        button.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const isOpen = menu.classList.contains("show");
-            toggleMenu(!isOpen);
-        });
+  mobileBtn?.addEventListener("click", () => {
+    const isOpen = mobileMenuWrapper?.classList.toggle("is-open");
 
-        document.addEventListener("click", (e) => {
-            if (
-                !menu.contains(e.target as Node) &&
-                !button.contains(e.target as Node)
-            ) {
-                toggleMenu(false);
-            }
-        });
+    hamburgerIcon?.classList.toggle("hidden", isOpen);
+    closeIcon?.classList.toggle("hidden", !isOpen);
+  });
 
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") {
-                toggleMenu(false);
-            }
-        });
-    }
+  galerieToggle?.addEventListener("click", () => {
+    const isListOpen = galerieList?.classList.toggle("is-open");
+    mobileChevron?.classList.toggle("rotate-180", isListOpen);
+  });
 </script>
