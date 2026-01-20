@@ -30,7 +30,7 @@ const FullPageSlideshow = ({ images }) => {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
+    <div className="relative w-full h-dvh overflow-hidden bg-black">
       {/* Slides */}
       <div className="relative w-full h-full">
         {images.map((image, index) => (
@@ -45,7 +45,6 @@ const FullPageSlideshow = ({ images }) => {
               className="w-full h-full object-cover"
             />
             {/* Optional: Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
           </div>
         ))}
       </div>
@@ -74,18 +73,14 @@ const FullPageSlideshow = ({ images }) => {
             key={index}
             onClick={() => handleUserInteraction(() => goToSlide(index))}
             className={`transition-all duration-300 rounded-full ${index === current
-                ? 'w-8 md:w-10 h-2 md:h-2.5 bg-white'
-                : 'w-2 md:w-2.5 h-2 md:h-2.5 bg-white/50 hover:bg-white/75'
+              ? 'w-8 md:w-10 h-2 md:h-2.5 bg-white'
+              : 'w-2 md:w-2.5 h-2 md:h-2.5 bg-white/50 hover:bg-white/75'
               }`}
             aria-label={`Zu Bild ${index + 1}`}
           />
         ))}
       </div>
 
-      {/* Optional: Image Counter */}
-      <div className="absolute top-8 right-8 z-10 bg-black/30 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm md:text-base">
-        {current + 1} / {images.length}
-      </div>
     </div>
   );
 };

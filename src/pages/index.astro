@@ -1,4 +1,5 @@
 ---
+import Button from "../components/Button.astro";
 import FullPageSlideshow from "../components/FullPageSlideshow";
 import Navigation from "../components/Navigation.astro";
 import "../styles/global.css";
@@ -15,5 +16,22 @@ import "../styles/global.css";
 	<body>
 		<Navigation />
 		<FullPageSlideshow client:load />
+		<section
+			class="text-center mt-10 mb-10 flex flex-col items-center gap-5"
+		>
+			<h1 class="text-6xl mt-4">Das Fotostudio auf Dem Lande</h1>
+			<p class="max-w-1/3">
+				Willkommen im ländlichen Studio, wo Fotografie zur Leidenschaft
+				wird. Unsere Mission ist es, deine Einzigartigkeit durch
+				Portraits zu unterstreichen und Momente festzuhalten, die
+				begeistern. Wir sind deine ländliche Anlaufstelle für
+				unvergessliche Aufnahmen. Lass dich inspirieren und entdecke,
+				wie wir gemeinsam deine Geschichte erzählen können.
+			</p>
+			<div>
+				<Button label="Bilder entdecken" />
+				<Button label="Shooting buchen" />
+			</div>
+		</section>
 	</body>
 </html>

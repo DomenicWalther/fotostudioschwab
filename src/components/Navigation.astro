@@ -18,7 +18,9 @@ const galerieItems = [
 ];
 ---
 
-<nav class="border-b border-black bg-white sticky top-0 z-100">
+<nav
+  class="border-b border-black backdrop-blur-xl bg-white/80 top-0 z-100 sticky w-full pointer"
+>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
       <div class="shrink-0 font-bold text-xl">LOGO</div>
@@ -56,7 +58,7 @@ const galerieItems = [
             </button>
 
             <div
-              class="dropdown-menu w-52 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+              class="dropdown-menu w-52 rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
             >
               <div class="py-1">
                 {
@@ -123,7 +125,7 @@ const galerieItems = [
     class="mobile-menu-container md:hidden border-t border-gray-100"
   >
     <div class="overflow-hidden">
-      <div class="px-4 pt-2 pb-8 space-y-1 bg-white">
+      <div class="px-4 pt-2 pb-8 space-y-1">
         {
           navItems.map((item) => (
             <a
